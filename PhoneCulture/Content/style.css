@@ -1,0 +1,35 @@
+﻿body{
+    background-color:darkgray;
+}
+
+#Register{
+    height: 400px;;
+    width: 573px;
+    background-color:lightgray;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#firstName{
+    padding: 10px;
+    color:blue;
+}
+
+#tableRegister {
+    margin:5%;
+}
+
+#adminLoginLink{
+    color:darkgray
+}
+
+.container {
+    padding:5px;
+}
+
+.productSearch {
+    padding:1%;
+}
+

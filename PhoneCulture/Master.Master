@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="PhoneCulture.Master" %>
+
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Phone Culture</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+    <link href="Content/style.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    
+    <form id="form1" runat="server">
+
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="index.aspx">Phone culture</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsupportedcontent" aria-controls="navbarsupportedcontent" aria-expanded="false" aria-label="toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link " href="index.aspx">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Products.aspx">Products</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class ="nav-item">
+            <asp:LinkButton class="nav-link" ID="lbCart" runat="server" OnClick="lbCart_Click" CausesValidation="False">Cart </asp:LinkButton>
+        </li>
+
+        <%--If a user is not logged in show the login and register links--%>
+        <li class="nav-item">
+            <asp:LinkButton class="nav-link" ID="lbLogin" runat="server" CausesValidation="False" OnClick="lbLogin_Click" >Login </asp:LinkButton>
+        </li>
+        <li class="nav-item">
+            <asp:LinkButton class="nav-link" ID="lbRegister" runat="server" CausesValidation="False" OnClick="lbRegister_Click" >Register </asp:LinkButton>
+        </li>
+
+        <%--Else show the logout link--%>
+        <li class="nav-item">
+            <asp:LinkButton class="nav-link" ID="lbLogout" runat="server" CausesValidation="False" OnClick="lbLogout_Click" Visible="False">Logout </asp:LinkButton>
+        </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="container body-content">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    <hr />
+    <footer style="text-align:center;">
+        <p>&copy; <%: DateTime.Now.Year %> - Phone Culture | 
+            <asp:LinkButton style="color:lightgrey" ID="lbAboutUs" runat="server" OnClick="lbAboutUs_Click" CausesValidation="False">About Us </asp:LinkButton> 
+            | <asp:LinkButton ID="lbContactUs" style="color:lightgrey" runat="server" OnClick="lbContactUs_Click" CausesValidation="False">Contact Us </asp:LinkButton> 
+            | <asp:LinkButton ID="lbAdminLogin" style="color:lightgrey" runat="server" OnClick="lbAdminLogin_Click" CausesValidation="False">Admin Login </asp:LinkButton>
+            | <asp:LinkButton ID="lbEditItems" style="color:lightgrey" runat="server" OnClick="lbEditItems_Click" CausesValidation="False">Edit Items</asp:LinkButton>
+        </p>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </form>
+</body>
+</html>
