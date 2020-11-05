@@ -32,8 +32,7 @@ namespace PhoneCulture
                 if (cartItem == null)
                 {
                     cart.AddItem(selectedProduct, Convert.ToInt32(txtQuantity.Text));
-                }
-                Response.Redirect("Cart.aspx", false);
+                };
             }
         }
 

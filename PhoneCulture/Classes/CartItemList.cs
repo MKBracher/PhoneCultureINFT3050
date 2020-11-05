@@ -27,7 +27,7 @@ namespace PhoneCulture.Classes
         //by index or product id
         public CartItem this[int index]
         {
-            get { return cartItems[1]; }
+            get { return cartItems[index]; }
         }
 
         public CartItem this[string id]
