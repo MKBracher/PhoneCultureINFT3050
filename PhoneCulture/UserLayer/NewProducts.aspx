@@ -48,6 +48,10 @@
                                 runat="server" />
                         </div>
                     </div>
+                    <div class="col-sm-4">
+                        <asp:Image ID="imgProduct" runat="server"
+                            ImageUrl='<%# Eval("image", "../Images/{0}") %>' />
+                    </div>
                 </div>
             </ItemTemplate>
         </asp:FormView>

@@ -10,9 +10,9 @@ namespace PhoneCulture.Classes
     {
         public string productID { get; set; }
         public string name { get; set; }
+        public string shortDescription { get; set; }
         public string description { get; set; }
         public decimal unitPrice { get; set; }
-        public string phoneType { get; set;  }
         public string imageFile { get; set; }
         public string type { get; set; }
 
