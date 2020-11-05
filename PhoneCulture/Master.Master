@@ -34,7 +34,7 @@
         <a class="nav-link " href="index.aspx">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Products.aspx">Products</a>
+        <a class="nav-link" href="NewProducts.aspx">Products</a>
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">

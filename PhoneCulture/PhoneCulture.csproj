@@ -143,6 +143,7 @@
     <Content Include="UserLayer\userAccounts.aspx" />
     <Content Include="UserLayer\X-Doria.aspx" />
     <Content Include="UserLayer\EditItems.aspx" />
+    <Content Include="UserLayer\NewProducts.aspx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -375,6 +376,13 @@
     </Compile>
     <Compile Include="UserLayer\EditItems.aspx.designer.cs">
       <DependentUpon>EditItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLayer\NewProducts.aspx.cs">
+      <DependentUpon>NewProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLayer\NewProducts.aspx.designer.cs">
+      <DependentUpon>NewProducts.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
