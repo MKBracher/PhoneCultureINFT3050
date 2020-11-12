@@ -42,13 +42,17 @@ namespace PhoneCulture
         {
             try
             {
-                if (objDAL.InsertUser(Email, Password, firstName, lastName, phoneNumber))
+                if (!objDAL.checkMemberExists(Email))
                 {
+                    objDAL.InsertUser(Email, Password, firstName, lastName, phoneNumber);
                     return true;
+
                 }
+
                 else
                 {
-                    throw new Exception("Email in use");
+                    MessageBox.Show("Email in use");
+                    return false;
                 }
 
             }
