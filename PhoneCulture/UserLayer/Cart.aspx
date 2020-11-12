@@ -19,7 +19,8 @@
                         <asp:Button ID="btnRemove" runat="server" Text="Remove Item"
                             OnClick="btnRemove_Click" CssClass="btn" />
                     </div>
-                    <div class="col-sm-12"><asp:Button ID="btnEmpty"
+                    <div class="col-sm-12">
+                        <asp:Button ID="btnEmpty"
                         runat="server" Text="Empty Cart" OnClick="btnEmpty_Click"
                         CssClass="btn" />
                     </div>

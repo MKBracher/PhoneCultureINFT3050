@@ -144,6 +144,8 @@
     <Content Include="UserLayer\X-Doria.aspx" />
     <Content Include="UserLayer\EditItems.aspx" />
     <Content Include="UserLayer\NewProducts.aspx" />
+    <Content Include="UserLayer\ProductMaintenance.aspx" />
+    <Content Include="UserLayer\Confirmation.aspx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -233,9 +235,13 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BillingShipping.cs" />
     <Compile Include="Classes\CartItem.cs" />
     <Compile Include="Classes\CartItemList.cs" />
     <Compile Include="Classes\conString.cs" />
+    <Compile Include="Classes\INFT3050PaymentFactory.cs" />
+    <Compile Include="Classes\INFT3050PaymentSystem%281%29.cs" />
+    <Compile Include="Classes\IPaymentSystem.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="BL\CustomerReg.cs" />
     <Compile Include="DAL\DAL.cs" />
@@ -383,6 +389,20 @@
     </Compile>
     <Compile Include="UserLayer\NewProducts.aspx.designer.cs">
       <DependentUpon>NewProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLayer\ProductMaintenance.aspx.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLayer\ProductMaintenance.aspx.designer.cs">
+      <DependentUpon>ProductMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLayer\Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLayer\Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

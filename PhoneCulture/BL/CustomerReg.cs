@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Windows;
 
 namespace PhoneCulture
 {
@@ -41,8 +42,15 @@ namespace PhoneCulture
         {
             try
             {
-                objDAL.InsertUser(Email, Password, firstName, lastName, phoneNumber);
-                return true;
+                if (objDAL.InsertUser(Email, Password, firstName, lastName, phoneNumber))
+                {
+                    return true;
+                }
+                else
+                {
+                    throw new Exception("Email in use");
+                }
+
             }
             
             catch (Exception ex)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -19,40 +20,45 @@ namespace PhoneCulture
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            //This is to save data to variables to then put into the database
-            String email, fName, lName, bAddress, bCity, bState, sAddress, sCity, sState;
-            int phNumber, bPostCode, sPostCode;
-            
+            BillingShipping billingShipping = new BillingShipping();
+
+            string bAddress = txtAddress.Text;
+            string bCity = txtCity.Text;
+            string bState = dropState.Text;
+            int bPostCode = Convert.ToInt32(txtPostCode.Text);
+
             //if the page validates
             if (IsValid)
             {
+
+
                 //insert into variables
-                email = txtEmail1.Text;
-                fName = txtFirstName.Text;
-                lName = txtLastName.Text;
-                phNumber = Convert.ToInt32(txtPhone.Text);
-                bAddress = txtAddress.Text;
-                bCity = txtCity.Text;
-                bState = dropState.Text;
-                bPostCode = Convert.ToInt32(txtPostCode.Text);
+
+                billingShipping.BAddress = bAddress;
+                billingShipping.BCity = bCity;
+                billingShipping.BState = bState;
+                billingShipping.BPostCode = bPostCode;
+
 
                 //if the billing and shipping are the same address
                 if (cbxShipping.Checked)
                 {
-                    sAddress = bAddress;
-                    sCity = bCity;
-                    sState = bState;
-                    sPostCode = bPostCode;
+                    billingShipping.SAddress = bAddress;
+                    billingShipping.SCity = bCity;
+                    billingShipping.SState = bState;
+                    billingShipping.SPostCode = bPostCode;
                 }
 
                 else
                 {
-                    sAddress = txtAddress2.Text;
-                    sCity = txtCity2.Text;
-                    sState = dropState2.Text;
-                    sPostCode = Convert.ToInt32(txtPostCode2.Text);
+                    billingShipping.SAddress = txtAddress2.Text;
+                    billingShipping.SCity = txtCity2.Text;
+                    billingShipping.SState = dropState2.Text;
+                    billingShipping.SPostCode = Convert.ToInt32(txtPostCode2.Text);
                 }
             }
+
+            Response.Redirect("Payment.aspx");
         }
 
 
@@ -87,6 +93,12 @@ namespace PhoneCulture
             }
 
             
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("Cart.aspx");
         }
     }
 }

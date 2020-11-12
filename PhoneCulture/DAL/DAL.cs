@@ -14,18 +14,44 @@ namespace PhoneCulture
 
         SqlConnection SqlConn = new SqlConnection("Data Source=.;Initial Catalog=PhoneCulture;Integrated Security=True");
 
-        public void InsertUser(string Email, string Password, string firstName, string lastName, int phoneNumber)
+        //Inserting a user into the database
+        public bool InsertUser(string Email, string Password, string firstName, string lastName, int phoneNumber)
         {
-
-            SqlCommand cmd = new SqlCommand("select * from member where email = '" + Email + "'");
-
-
-            SqlDataAdapter SqlAdp = new SqlDataAdapter("insert into member values ('" + firstName + "','" + lastName + "','" +
+            SqlConn.Open();
+            try
+            {
+                SqlCommand cmd = new SqlCommand("select * from member where email = '" + Email + "'");
+                cmd.Connection = SqlConn;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (!dr.HasRows)
+                {
+                    SqlDataAdapter SqlAdp = new SqlDataAdapter("insert into member values ('" + firstName + "','" + lastName + "','" +
                     Email + "'," + phoneNumber + ",'" + Password + "', 0)", SqlConn);
-            DataTable DT = new DataTable();
-            SqlAdp.Fill(DT);
+                    DataTable DT = new DataTable();
+                    SqlAdp.Fill(DT);
+                    return true;
+                }
+
+                else
+                {
+                    MessageBox.Show("Email in use");
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            finally
+            {
+                SqlConn.Close();
+
+            }
+
         }
 
+
+        //Selecting a user in the database
         public object SelectUser()
         {
             SqlDataAdapter SQLAdp = new SqlDataAdapter("Select * from member", SqlConn);
@@ -34,6 +60,7 @@ namespace PhoneCulture
             return DT;
         }
 
+        //Logging in a user
         public bool UserLogin(string email, string password)
         {
             SqlConn.Open();
@@ -74,7 +101,7 @@ namespace PhoneCulture
 
         }
 
-
+        //Logging in an admin
         public bool AdminLogin(string email, string password)
         {
             SqlConn.Open();
@@ -115,28 +142,6 @@ namespace PhoneCulture
 
         }
 
-        //public bool RegisterMemberData(string Email, string Password, string firstName, string lastName, int phoneNumber)
-        //{
-        //    conString.con.Open();
-        //    try
-        //    {
-        //        string query = "insert into member values ('" + firstName + "','" + lastName + "','" +
-        //            Email + "'," + phoneNumber+ ",'" + Password + "', null)";
-        //        SqlCommand cmd = new SqlCommand(query, conString.con);
-        //        cmd.ExecuteNonQuery();
-        //        return true;
-        //    }
-
-        //    catch(Exception ex)
-        //    {
-        //        throw new Exception(ex.Message.ToString());
-        //    }
-        //    finally
-        //    {
-        //        conString.con.Close();
-        //        conString.con.Dispose();
-        //    }
-        //}
 
     }
 }

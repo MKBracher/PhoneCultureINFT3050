@@ -20,6 +20,7 @@ namespace PhoneCulture
                     lbRegister.Visible = true;
                     lbAdminLogin.Visible = true;
                     lbLogout.Visible = false;
+                    lbProductMaintenance.Visible = false;
                 }
 
                 else if (Session["role"].Equals("user"))
@@ -28,6 +29,7 @@ namespace PhoneCulture
                     lbRegister.Visible = false;
                     lbAdminLogin.Visible = false;
                     lbLogout.Visible = true;
+                    lbProductMaintenance.Visible = false;
                 }
 
                 else if (Session["role"].Equals("admin"))
@@ -36,6 +38,8 @@ namespace PhoneCulture
                     lbRegister.Visible = false;
                     lbAdminLogin.Visible = false;
                     lbLogout.Visible = true;
+                    lbProductMaintenance.Visible = true;
+                    lbLine.Visible = false;
                 }
 
 
@@ -88,5 +92,12 @@ namespace PhoneCulture
         {
             Response.Redirect("editItems.aspx");
         }
+
+        protected void lbProductMaintenance_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ProductMaintenance.aspx");
+        }
+
+
     }
 }

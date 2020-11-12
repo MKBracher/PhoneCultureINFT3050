@@ -1,6 +1,7 @@
 ﻿using PhoneCulture.Classes;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,7 +19,8 @@ namespace PhoneCulture
             //retrieve cart object from session state on every postback
             cart = CartItemList.GetCart();
             //on initial page load, art cart items to list control
-            if (IsPostBack) this.DisplayCart();
+            if (!IsPostBack) this.DisplayCart();
+
         }
 
         protected void btnEmpty_Click(object sender, EventArgs e)
@@ -63,7 +65,15 @@ namespace PhoneCulture
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Payment.aspx");
+            decimal totalPrice = 0;
+
+            for (int i=0; i<cart.Count; i++)
+            {
+                totalPrice = cart[i].getPrice() + totalPrice;
+            }
+            Session["totalPrice"] = totalPrice;
+            string url = ConfigurationManager.AppSettings["SecurePath"] + "UpdateInformation.aspx";
+            Response.Redirect(url);
         }
     }
 }

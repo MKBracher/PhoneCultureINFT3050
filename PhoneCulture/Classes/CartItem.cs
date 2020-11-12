@@ -38,5 +38,11 @@ namespace PhoneCulture.Classes
             return displayString;
         }
 
+        public decimal getPrice()
+        {
+            decimal totalPrice = Product.unitPrice * this.Quantity;
+            return totalPrice;
+        }
+
     }
 }

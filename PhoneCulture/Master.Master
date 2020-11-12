@@ -65,10 +65,12 @@
     <hr />
     <footer style="text-align:center;">
         <p>&copy; <%: DateTime.Now.Year %> - Phone Culture | 
-            <asp:LinkButton style="color:lightgrey" ID="lbAboutUs" runat="server" OnClick="lbAboutUs_Click" CausesValidation="False">About Us </asp:LinkButton> 
+            <asp:LinkButton ID="lbAdminLogin" style="color:lightgrey" runat="server" OnClick="lbAdminLogin_Click" CausesValidation="False">Admin Login </asp:LinkButton>
+            <asp:Label ID ="lbLine" runat="server">| </asp:Label>
+             <asp:LinkButton style="color:lightgrey" ID="lbAboutUs" runat="server" OnClick="lbAboutUs_Click" CausesValidation="False">About Us </asp:LinkButton> 
             | <asp:LinkButton ID="lbContactUs" style="color:lightgrey" runat="server" OnClick="lbContactUs_Click" CausesValidation="False">Contact Us </asp:LinkButton> 
-            | <asp:LinkButton ID="lbAdminLogin" style="color:lightgrey" runat="server" OnClick="lbAdminLogin_Click" CausesValidation="False">Admin Login </asp:LinkButton>
-            | <asp:LinkButton ID="lbEditItems" style="color:lightgrey" runat="server" OnClick="lbEditItems_Click" CausesValidation="False">Edit Items</asp:LinkButton>
+            | <asp:LinkButton ID="lbProductMaintenance" style="color:lightgrey" runat="server" OnClick="lbProductMaintenance_Click" CausesValidation="False" Visible="False">Product Maintenance</asp:LinkButton>
+
         </p>
     </footer>
 </div>
