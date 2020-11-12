@@ -17,38 +17,65 @@ namespace PhoneCulture
         //Inserting a user into the database
         public bool InsertUser(string Email, string Password, string firstName, string lastName, int phoneNumber)
         {
-            SqlConn.Open();
             try
             {
-                SqlCommand cmd = new SqlCommand("select * from member where email = '" + Email + "'");
-                cmd.Connection = SqlConn;
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (!dr.HasRows)
+                if (SqlConn.State == ConnectionState.Closed)
                 {
-                    SqlDataAdapter SqlAdp = new SqlDataAdapter("insert into member values ('" + firstName + "','" + lastName + "','" +
+                    SqlConn.Open();
+                }
+
+                
+
+                SqlCommand cmd = new SqlCommand("insert into member values ('" + firstName + "','" + lastName + "','" +
                     Email + "'," + phoneNumber + ",'" + Password + "', 0)", SqlConn);
-                    DataTable DT = new DataTable();
-                    SqlAdp.Fill(DT);
+
+                cmd.ExecuteNonQuery();
+                SqlConn.Close();
+                return true;
+            }
+
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+
+        }
+
+        public bool checkMemberExists(string Email)
+        {
+
+            try
+            {
+                if (SqlConn.State == ConnectionState.Closed)
+                {
+                    SqlConn.Open();
+                }
+
+                SqlCommand cmd = new SqlCommand("SELECT * from member WHERE email = '" + Email + "'", SqlConn);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count >= 1)
+                {
                     return true;
                 }
 
                 else
                 {
-                    MessageBox.Show("Email in use");
                     return false;
                 }
             }
-            catch (Exception e)
+            catch(Exception Ex)
             {
-                return false;
-            }
-            finally
-            {
-                SqlConn.Close();
 
             }
 
+
+
+            return false;
         }
+
 
 
         //Selecting a user in the database
