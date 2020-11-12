@@ -27,7 +27,26 @@ namespace PhoneCulture
             {
                 MessageBox.Show("Logged In");
                 Session["role"] = "user";
-                Response.Redirect("index.aspx");
+
+                try
+                {
+                    if (Session["checkoutRedirect"].Equals("true"))
+                    {
+                        Response.Redirect("UpdateInformation.aspx", false);
+                        Session["checkoutRedirect"] = "";
+                    }
+                    else
+                    {
+                        Response.Redirect("index.aspx");
+                    }
+                }
+                catch
+                {
+                    Response.Redirect("index.aspx");
+                }
+
+
+
             }
 
 

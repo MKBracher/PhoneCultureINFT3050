@@ -67,13 +67,40 @@ namespace PhoneCulture
         {
             decimal totalPrice = 0;
 
-            for (int i=0; i<cart.Count; i++)
+            for (int i = 0; i < cart.Count; i++)
             {
                 totalPrice = cart[i].getPrice() + totalPrice;
+                Session["totalPrice"] = totalPrice;
             }
-            Session["totalPrice"] = totalPrice;
-            string url = ConfigurationManager.AppSettings["SecurePath"] + "UpdateInformation.aspx";
-            Response.Redirect(url);
+
+            try
+            {
+                if (Session["role"].Equals(""))
+                {
+                    Session["checkoutRedirect"] = "true";
+                    Response.Redirect("Login.aspx");
+                }
+
+                else
+                {
+                    string url = ConfigurationManager.AppSettings["SecurePath"] + "UpdateInformation.aspx";
+                    Response.Redirect(url);
+                }
+            }
+            catch
+            {
+                Session["checkoutRedirect"] = "true";
+                Response.Redirect("Login.aspx");
+            }
+
+
+
+
+
+
+
+
+
         }
     }
 }

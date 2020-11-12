@@ -22,21 +22,21 @@ namespace PhoneCulture
         public string lastName { get => _lastName; set => _lastName = value; }
         public int phoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
 
-        public bool Save()
-        {
-            try
-            {
-                DAL obj = new DAL();
+        //public bool Save()
+        //{
+        //    try
+        //    {
+        //        DAL obj = new DAL();
 
-                //obj.RegisterMemberData(_Email, _Password, _firstName, _lastName, _phoneNumber);
-                return true;
-            }
+        //        //obj.RegisterMemberData(_Email, _Password, _firstName, _lastName, _phoneNumber);
+        //        return true;
+        //    }
             
-            catch(Exception ex)
-            {
-                throw new Exception("Not executed");
-            }
-        }
+        //    catch(Exception ex)
+        //    {
+        //        throw new Exception("Not executed");
+        //    }
+        //}
 
         public bool InsertUser()
         {
